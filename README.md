@@ -1,5 +1,5 @@
 # Front end Adventure Blog Post 🎄🎁
-![index]()
+![index](https://github.com/Daniels-not/Todo-Aventure-Django-/blob/main/main.png)
 
 ## Functionalities ✨
 
