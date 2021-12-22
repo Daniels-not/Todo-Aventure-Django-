@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Items</title>
+</head>
+<body>
+
+{% extends 'base.html' %}
+
+{% if user.is_authenticated %}
+
+    {% block content %}
+
+
+    <form action="#" method="POST">
+        {% csrf_token %}
+        {% for item in item.todoitems_set.all  %}
+            {% if item.complete == True %}
+                <div class="card text-center">
+                  <div class="card-body">
+                      <div class="form-check">
+                            <input type="checkbox" class="form-check-input" name="c{{ item.id }}" checked><p class="card-text">{{ item.text }}</p>
+                        </div>
+                        <div class="card-footer text-muted">
+                            <i>{{ item.dateTime }}</i>
+                        </div>
+                  </div>
+                </div>
+
+            {% else %}
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" value="clicked" name="c{{ item.id }}">{ item.text }} - <i>{{ item.dateTime }}</i>
+                    </div>
+
+            {% endif %}
+
+        {% endfor %}
+
+
+
+        <div class="d-grid gab-2">
+            <div class="input-group mb-3 mt-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Item name</span>
+                <input type="text" name="newType" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            </div>
+            <button  class="btn btn-primary mb-2" type="submit" name="save" value="save" >Save</button>
+            <button  class="btn btn-success" type="submit" name="newItem" value="newItem" >Create</button>
+        </div>
+
+    </form>
+
+{% endblock %}
+
+{% else %}
+
+    <div class="alert alert-warning d-flex align-items-center" role="alert">
+      <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+      <div>
+          Log in to access to this section <a href="/login">Log in</a>
+      </div>
+    </div>
+
+{% endif %}
+</body>
+</html>

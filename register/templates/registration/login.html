@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log in</title>
+</head>
+<body>
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <form action="" method="POST">
+        {{ csrf_token }}
+        {{ form|crispy }}
+        <p>You don't have an account yet? create one <a href="/register">Register</a></p>
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-success">Log in</button>
+        </div>
+    </form>
+
+{% endblock %}
+</body>
+</html>

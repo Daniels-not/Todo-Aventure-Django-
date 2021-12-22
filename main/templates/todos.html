@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todos Views</title>
+</head>
+<body>
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% for todos in user.todolist_set.all %}
+
+        <p><a href="/{{ todos.id }}">{{ todo.name }}</a></p>
+
+    {% endfor %}
+
+{% endblock %}
+</body>
+</html>
